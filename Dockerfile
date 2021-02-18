@@ -4,6 +4,7 @@ RUN apk add -U \
   bash \
   build-base \
   curl \
+  dumb-init \
   git \
   libffi-dev \
   openssh \
