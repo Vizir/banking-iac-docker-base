@@ -15,9 +15,6 @@ ENV TERRAGRUNT_VER 0.28.6
 RUN curl -o /bin/terragrunt -L "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VER}/terragrunt_linux_amd64" \
   && chmod u+x /bin/terragrunt
 
-RUN mkdir -p ~/.ssh \
-  && ssh-keyscan -H github.com > ~/.ssh/known_hosts
-
 COPY requirements.txt .
 RUN ln -s /usr/bin/python3 /usr/bin/python \
   && pip install --upgrade pip \
