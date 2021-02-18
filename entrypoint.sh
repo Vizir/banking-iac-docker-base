@@ -1,11 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/dumb-init /bin/bash
 
 env_dir=$1
-shift
 
-for d in $env_dir; do
-  if [[ -d "$d" ]]; then
-    printf "\n==> $d: terragrunt $@\n\n"
-    (cd $d && terragrunt $@)
-  fi
-done
+if [[ -d "$env_dir" ]]; then
+  shift
+  cd $env_dir
+fi
+
+terragrunt $@
