@@ -10,7 +10,8 @@ RUN apk add -U \
   openssh \
   py3-pip \
   python3-dev \
-  zip
+  zip \
+  ansible
 
 ENV TERRAGRUNT_VER 0.28.6
 RUN curl -o /bin/terragrunt -L "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VER}/terragrunt_linux_amd64" \
@@ -19,6 +20,7 @@ RUN curl -o /bin/terragrunt -L "https://github.com/gruntwork-io/terragrunt/relea
 COPY requirements.txt .
 RUN ln -s /usr/bin/python3 /usr/bin/python \
   && pip install --upgrade pip \
+  && pip install awscli \
   && pip install -r requirements.txt
 
 COPY entrypoint.sh /
